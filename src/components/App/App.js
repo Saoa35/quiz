@@ -1,3 +1,5 @@
+import React from 'react';
+import { useState } from 'react';
 import '../../index.scss';
 
 const questions = [
@@ -32,7 +34,7 @@ function Game() {
   return (
     <>
       <div className="progress">
-        <div style={{ width: '50%' }} className="progress__inner"></div>
+        <div style={{ width: '85%' }} className="progress__inner"></div>
       </div>
       <h1>Who discovered America?</h1>
       <ul>
@@ -45,6 +47,9 @@ function Game() {
 }
 
 function App() {
+
+  const [step, setStep] = useState(0);
+
   return (
     <div className="App">
       <Game />
