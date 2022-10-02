@@ -4,7 +4,12 @@ import '../../index.scss';
 
 const questions = [
   {
-    title: 'What is the capital of scotland?',
+    title: 'Who discovered America?',
+    variants: ['Christopher Columbus', 'Giacomo Casanova', 'Leonardo da Vinci'],
+    correct: 0,
+  },
+  {
+    title: 'What is the capital of Scotland?',
     variants: ['Edinburg', 'Dublin', 'Reykjavik'],
     correct: 0,
   },
@@ -30,17 +35,17 @@ function Result() {
   );
 }
 
-function Game() {
+function Game({ question }) {
   return (
     <>
       <div className="progress">
         <div style={{ width: '85%' }} className="progress__inner"></div>
       </div>
-      <h1>Who discovered America?</h1>
+      <h1>{question.title}</h1>
       <ul>
-        <li>Christopher Columbus</li>
-        <li>Giacomo Casanova</li>
-        <li>Leonardo da Vinci</li>
+        {question.variants.map((el, index) => (
+          <li key={index}>{el}</li>
+        ))}
       </ul>
     </>
   );
@@ -49,10 +54,11 @@ function Game() {
 function App() {
 
   const [step, setStep] = useState(0);
+  const question = questions[step];
 
   return (
     <div className="App">
-      <Game />
+      <Game question={question} />
       {/* <Result /> */}
     </div>
   );
