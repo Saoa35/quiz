@@ -56,6 +56,10 @@ function App() {
   const [step, setStep] = useState(0);
   const question = questions[step];
 
+  const handleClickVariant = (index) => {
+    
+  }
+
   return (
     <div className="App">
       <Game question={question} />
