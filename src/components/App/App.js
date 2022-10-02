@@ -35,16 +35,19 @@ function Result() {
   );
 }
 
-function Game({ question }) {
+function Game({ step, question, handleClickVariant }) {
+
+  const percentage = Math.round(step / questions.length * 100);
+
   return (
     <>
       <div className="progress">
-        <div style={{ width: '85%' }} className="progress__inner"></div>
+        <div style={{ width: `${percentage}%` }} className="progress__inner"></div>
       </div>
       <h1>{question.title}</h1>
       <ul>
         {question.variants.map((el, index) => (
-          <li key={index}>{el}</li>
+          <li onClick={() => handleClickVariant(index)} key={index}>{el}</li>
         ))}
       </ul>
     </>
@@ -57,13 +60,17 @@ function App() {
   const question = questions[step];
 
   const handleClickVariant = (index) => {
-    
+    console.log(step, index);
+    setStep(step + 1);
   }
 
   return (
     <div className="App">
-      <Game question={question} />
-      {/* <Result /> */}
+      {
+        step !== questions.length ? <Game step={step} question={question} handleClickVariant={handleClickVariant} /> 
+        : <Result />
+        
+      }
     </div>
   );
 }
