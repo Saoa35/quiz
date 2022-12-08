@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "../../index.scss";
+import { Game } from "../Game";
 import { Result } from "../Result";
 
 const questions = [
@@ -26,29 +27,6 @@ const questions = [
   },
 ];
 
-function Game({ step, question, handleClickVariant }) {
-  const percentage = Math.round((step / questions.length) * 100);
-
-  return (
-    <>
-      <div className="progress">
-        <div
-          style={{ width: `${percentage}%` }}
-          className="progress__inner"
-        ></div>
-      </div>
-      <h1>{question.title}</h1>
-      <ul>
-        {question.variants.map((el, index) => (
-          <li onClick={() => handleClickVariant(index)} key={index}>
-            {el}
-          </li>
-        ))}
-      </ul>
-    </>
-  );
-}
-
 function App() {
   const [step, setStep] = useState(0);
   const [correct, setCorrect] = useState(0);
@@ -69,6 +47,7 @@ function App() {
           step={step}
           question={question}
           handleClickVariant={handleClickVariant}
+          questions={questions}
         />
       ) : (
         <Result correct={correct} questions={questions} />
