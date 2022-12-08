@@ -1,4 +1,4 @@
-export function Result({ correct }) {
+export function Result({ correct, questions }) {
   return (
     <div className="result">
       <img

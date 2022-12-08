@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "../../index.scss";
+import { Result } from "../Result";
 
 const questions = [
   {
@@ -70,7 +71,7 @@ function App() {
           handleClickVariant={handleClickVariant}
         />
       ) : (
-        <Result correct={correct} />
+        <Result correct={correct} questions={questions} />
       )}
     </div>
   );
